@@ -1,0 +1,75 @@
+﻿@using MVCTrainProject.Models
+@model List<customer>
+@{ ViewBag.Title = "Index"; }
+
+<h2 style="color:white">Customer List / Müşteri Listeleme</h2>
+<!DOCTYPE html>
+
+<html>
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <link href="~/Content/Style.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <title>Index</title>
+    <script>
+
+        function Alert(id) {
+
+            alert(id + ". Müşteri Silindi");
+
+        }
+    </script>
+</head>
+<body>
+
+
+    <div class="container">
+        <div class="col-md-7">
+            <div>
+
+                <table style="border: 3px solid black; background-color: white; text-align: center">
+                    <thead>
+                        <tr>
+                            <th style="border:1px solid black; padding: 10px">Customer Id</th>
+                            <th style="border:1px solid black">First Name</th>
+                            <th style="border:1px solid black">Last Name</th>
+                            <th style="border:1px solid black">E mail</th>
+                            <th style="border:1px solid black">Phone Number</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var customer in Model)
+                        {
+            <tr style="border: 1px solid black; padding:10px">
+
+                <td style="border: 1px solid black; padding: 10px">@customer.customer_id</td>
+                <td style="border: 1px solid black; padding: 10px">@customer.fname</td>
+                <td style="border: 1px solid black; padding: 10px">@customer.lname</td>
+                <td style="border: 1px solid black; padding: 10px">@customer.email </td>
+                <td style="border: 1px solid black; padding: 10px">@customer.phone_number </td>
+                <td style="border: 1px solid black"><a href="/Customer/Delete/@customer.customer_id" onclick="Alert(@customer.customer_id)" id="@customer.customer_id" class="btn btn-danger">SİL / DELETE</a> </td>
+                <td style="border: 1px solid black"><a href="/Customer/BringCustomer/@customer.customer_id" class="btn btn-success">GÜNCELLE / UPDATE</a> </td>
+                <td style="border: 1px solid black"><a href="/Car/AddCar/@customer.customer_id" class="btn btn-warning">Araba Ekle</a> </td>
+                <br />
+            </tr>}
+                    </tbody>
+                </table>
+
+                <br />
+                <td><a href="/Customer/AddCustomer" class="btn btn-primary">Müşteri Ekle / Add Customer</a> </td>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-7">
+
+        </div>
+    </div>
+
+
+</body>
+</html>

@@ -1,0 +1,97 @@
+﻿.* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    
+}
+
+body {
+    background-image: url(otopark2.jpg);
+    font-family: sans-serif;
+}
+
+.Menu-bar {
+    background-color: darkslategray;
+    text-align: center;
+    
+}
+
+    .Menu-bar ul {
+        display: inline-flex;
+        list-style: none;
+    }
+
+        .Menu-bar ul li {
+            width: 200px;
+            margin: 20px;
+            padding: 20px;
+        }
+
+            .Menu-bar ul li a {
+                text-decoration: none;
+                color: white;
+            }
+
+            .Menu-bar ul li:hover {
+                background: rgb(0, 0, 0);
+                border-radius: 10px;
+            }
+            
+            .Menu-bar .fas{
+                margin-right: 8px;
+            }
+
+            .sub-menu-1{
+                display: none;
+                
+            }
+
+.Menu-bar ul li:hover .sub-menu-1 {
+    display: block;
+    position: absolute;
+    background-color: darkslategray;
+    margin-top: 17px;
+    margin-left: -35px;
+    font-size: 13px;
+}
+
+            .Menu-bar ul li:hover .sub-menu-1 ul{
+                display:none;
+            }
+            
+            .Menu-bar ul li:hover .sub-menu-1 ul li{
+                width: 150px;
+                padding: 5px;
+                border-bottom: 1px dotted white;
+                border-radius: 0;
+                cursor: pointer;
+            }
+            
+            .sub-menu-2{
+                display: none;
+            }
+
+.Menu-bar ul li:hover .sub-menu-2 {
+    display: block;
+    position: absolute;
+    background-color: darkslategray;
+    margin-top: 17px;
+    margin-left: -35px;
+    font-size: 13px;
+}
+
+    .Menu-bar ul li:hover .sub-menu-2 ul {
+        display:none ;
+        
+    }
+
+        .Menu-bar ul li:hover .sub-menu-2 ul li {
+            width: 150px;
+            padding: 5px;
+            border-bottom: 1px dotted white;
+            border-radius: 0;
+            cursor: pointer;
+            
+        }
+
+ 

@@ -1,0 +1,38 @@
+﻿@model MVCTrainProject.Models.customer
+
+@{ ViewBag.Title = "AddCar"; }
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.6.0.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+<h2 style="color:white"><b>Add Car / Araç Ekle</b></h2>
+
+<div>
+    <form method="post">
+        <div>
+            <label style="color:white"><strong>Customer Number / Müşteri Numarası</strong></label>
+            @Html.TextBoxFor(c => c.customer_id, new { @class = "form-control", @readonly = "readonly" })
+        </div>
+
+        <div>
+            <label style="color:white"><strong>Car Plate / Araba Plakası</strong></label>
+            <input type="text" name="car_plate" class="form-control" />
+        </div>
+        <br />
+        <button class="btn btn-info" id="arabaekle">Araba Ekle</button>
+        <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+        <script>
+
+            $(function () {
+
+                $("#arabaekle").on('click', function () {
+                    window.alert("Araç Veri Tabanına Eklendi");
+                });
+            });
+        </script>
+</div>
+     </form>
+</div>

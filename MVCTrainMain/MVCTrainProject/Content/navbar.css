@@ -1,0 +1,21 @@
+﻿.* {
+    
+}
+
+
+.navbar .nav-item {
+    padding: .5rem .5rem;
+    margin: 0 .25rem;
+}
+
+.navbar .dropdown-menu {
+    /*  nav-item yüksekliği  */
+    top: 45px;
+}
+
+/* fareyle üzerine gelindiğinde açılır menüyü gösterir */
+.navbar .dropdown:hover .dropdown-menu, .navbar .dropdown .dropdown-menu:hover {
+    display: block;
+    visibility: visible;
+    opacity: 1;
+}

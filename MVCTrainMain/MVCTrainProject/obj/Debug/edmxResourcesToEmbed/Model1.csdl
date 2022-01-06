@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="car_parkModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="car">
+    <Key>
+      <PropertyRef Name="car_id" />
+    </Key>
+    <Property Name="car_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="customer_id" Type="Int32" />
+    <Property Name="car_plate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="customer" Relationship="Self.FK__car__customer_id__5535A963" FromRole="car" ToRole="customer" />
+    <NavigationProperty Name="registration_date" Relationship="Self.FK__registrat__car_i__59063A47" FromRole="car" ToRole="registration_date" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="customer_id" />
+    </Key>
+    <Property Name="customer_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="lname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phone_number" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="car" Relationship="Self.FK__car__customer_id__5535A963" FromRole="customer" ToRole="car" />
+  </EntityType>
+  <EntityType Name="employess">
+    <Key>
+      <PropertyRef Name="employee_id" />
+    </Key>
+    <Property Name="employee_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="pword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="salary" Type="Double" Nullable="false" />
+    <NavigationProperty Name="manager" Relationship="Self.FK__manager__employe__5070F446" FromRole="employess" ToRole="manager" />
+    <NavigationProperty Name="registration_date" Relationship="Self.FK__registrat__emplo__5812160E" FromRole="employess" ToRole="registration_date" />
+    <NavigationProperty Name="worker" Relationship="Self.FK__worker__employee__4D94879B" FromRole="employess" ToRole="worker" />
+  </EntityType>
+  <EntityType Name="manager">
+    <Key>
+      <PropertyRef Name="manager_id" />
+    </Key>
+    <Property Name="manager_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="employee_id" Type="Int32" Nullable="false" />
+    <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="lname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phone_number" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="employess" Relationship="Self.FK__manager__employe__5070F446" FromRole="manager" ToRole="employess" />
+  </EntityType>
+  <EntityType Name="registration_date">
+    <Key>
+      <PropertyRef Name="r_date_id" />
+    </Key>
+    <Property Name="r_date_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="employee_id" Type="Int32" Nullable="false" />
+    <Property Name="car_id" Type="Int32" Nullable="false" />
+    <Property Name="leave_time" Type="DateTime" Precision="0" />
+    <Property Name="entery_time" Type="DateTime" Precision="0" />
+    <Property Name="location_number" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="car" Relationship="Self.FK__registrat__car_i__59063A47" FromRole="registration_date" ToRole="car" />
+    <NavigationProperty Name="employess" Relationship="Self.FK__registrat__emplo__5812160E" FromRole="registration_date" ToRole="employess" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="worker">
+    <Key>
+      <PropertyRef Name="worker_id" />
+    </Key>
+    <Property Name="worker_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="employee_id" Type="Int32" Nullable="false" />
+    <Property Name="fname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="lname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="phone_number" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="employess" Relationship="Self.FK__worker__employee__4D94879B" FromRole="worker" ToRole="employess" />
+  </EntityType>
+  <Association Name="FK__car__customer_id__5535A963">
+    <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+    <End Role="car" Type="Self.car" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="customer_id" />
+      </Principal>
+      <Dependent Role="car">
+        <PropertyRef Name="customer_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__registrat__car_i__59063A47">
+    <End Role="car" Type="Self.car" Multiplicity="1" />
+    <End Role="registration_date" Type="Self.registration_date" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="car">
+        <PropertyRef Name="car_id" />
+      </Principal>
+      <Dependent Role="registration_date">
+        <PropertyRef Name="car_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__manager__employe__5070F446">
+    <End Role="employess" Type="Self.employess" Multiplicity="1" />
+    <End Role="manager" Type="Self.manager" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employess">
+        <PropertyRef Name="employee_id" />
+      </Principal>
+      <Dependent Role="manager">
+        <PropertyRef Name="employee_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__registrat__emplo__5812160E">
+    <End Role="employess" Type="Self.employess" Multiplicity="1" />
+    <End Role="registration_date" Type="Self.registration_date" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employess">
+        <PropertyRef Name="employee_id" />
+      </Principal>
+      <Dependent Role="registration_date">
+        <PropertyRef Name="employee_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__worker__employee__4D94879B">
+    <End Role="employess" Type="Self.employess" Multiplicity="1" />
+    <End Role="worker" Type="Self.worker" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="employess">
+        <PropertyRef Name="employee_id" />
+      </Principal>
+      <Dependent Role="worker">
+        <PropertyRef Name="employee_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="car_parkEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="car" EntityType="Self.car" />
+    <EntitySet Name="customer" EntityType="Self.customer" />
+    <EntitySet Name="employess" EntityType="Self.employess" />
+    <EntitySet Name="manager" EntityType="Self.manager" />
+    <EntitySet Name="registration_date" EntityType="Self.registration_date" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+    <EntitySet Name="worker" EntityType="Self.worker" />
+    <AssociationSet Name="FK__car__customer_id__5535A963" Association="Self.FK__car__customer_id__5535A963">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="car" EntitySet="car" />
+    </AssociationSet>
+    <AssociationSet Name="FK__registrat__car_i__59063A47" Association="Self.FK__registrat__car_i__59063A47">
+      <End Role="car" EntitySet="car" />
+      <End Role="registration_date" EntitySet="registration_date" />
+    </AssociationSet>
+    <AssociationSet Name="FK__manager__employe__5070F446" Association="Self.FK__manager__employe__5070F446">
+      <End Role="employess" EntitySet="employess" />
+      <End Role="manager" EntitySet="manager" />
+    </AssociationSet>
+    <AssociationSet Name="FK__registrat__emplo__5812160E" Association="Self.FK__registrat__emplo__5812160E">
+      <End Role="employess" EntitySet="employess" />
+      <End Role="registration_date" EntitySet="registration_date" />
+    </AssociationSet>
+    <AssociationSet Name="FK__worker__employee__4D94879B" Association="Self.FK__worker__employee__4D94879B">
+      <End Role="employess" EntitySet="employess" />
+      <End Role="worker" EntitySet="worker" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

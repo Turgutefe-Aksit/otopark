@@ -1,0 +1,52 @@
+﻿@using MVCTrainProject.Models
+@model List<registration_date>
+@{ ViewBag.Title = "ParkList"; }
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.6.0.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+<h2 style="color:white">Park List / Otopark Listesi</h2>
+
+<div class="container">
+
+    <table style="background-color: white">
+        <thead>
+            <tr>
+                <th style="border:1px solid black; padding: 10px">Registration Id</th>
+                <th style="border: 1px solid black; padding: 10px">Car Plate</th>
+                <th style="border: 1px solid black; padding: 10px">Location Number</th>
+                <th style="border: 1px solid black; padding: 10px">Entry Time</th>
+                <th style="border: 1px solid black; padding: 10px">Leave Time</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var regist in Model)
+            {
+                if (@regist.leave_time != null)
+                {
+<tr style="border: 1px solid black">
+    <td style="border: 1px solid black; padding: 10px; position:center">@regist.r_date_id</td>
+    <td style="border: 1px solid black; padding: 10px">@regist.car.car_plate</td>
+    <td style="border: 1px solid black; padding: 10px; position:center">@regist.loc_number</td>
+    <td style="border: 1px solid black; padding: 10px">@regist.entery_time</td>
+    <td style="border: 1px solid black; padding: 10px">@regist.leave_time</td>
+    <td style="border: 1px solid black; padding: 10px; color: crimson">Park Bitti</td>
+</tr> }
+                else
+                {
+<tr style="border: 1px solid black">
+    <td style="border: 1px solid black; padding: 10px; position: center">@regist.r_date_id</td>
+    <td style="border: 1px solid black; padding: 10px">@regist.car.car_plate</td>
+    <td style="border: 1px solid black; padding: 10px; position: center">@regist.loc_number</td>
+    <td style="border: 1px solid black; padding: 10px">@regist.entery_time</td>
+    <td style="border: 1px solid black; padding: 10px">@regist.leave_time</td>
+    <td style="border: 1px solid black; padding: 10px; color: darkcyan">Park Devam Ediyor</td>
+</tr>                }
+            }
+        </tbody>
+    </table>
+</div>

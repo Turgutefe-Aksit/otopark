@@ -1,0 +1,62 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link href="~/Content/navbar.css" rel="stylesheet" />
+    <link href="~/Content/Style.css" rel="stylesheet" />
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="#"><span style="color:red">P</span>Manager</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="https://localhost:44366/Customer/Index"> Müşteri Listeleme / Customer List <span class="sr-only"></span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://localhost:44366/Car/CarList"> Araç Listeleme / Car List </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://localhost:44366/Park/Index"> Otopark Durumu / Park Situation</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        İletişim Bilgileri / Contact Information
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a class="dropdown-item" href="#">Yiğit Emir SANURA: 05** *** ****</a>
+                        <a class="dropdown-item" href="#">Turgutefe AKŞİT: 05** *** ****</a>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://localhost:44366/Security/Login"> Çıkış Yap / Log out </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <script>
+        $(document).ready(function () {
+            $(".navbar .dropdown-toggle").hover(function () {
+                $(this).parent().toggleClass("show");
+                $(this).parent().find(".dropdown-menu").toggleClass("show");
+            });
+
+            $(".navbar .dropdown-menu").mouseleave(function () {
+                $(this).removeClass("show");
+            });
+        });
+    </script>
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p style="color: white"> @DateTime.Now.Year - Bize Ulaşın 0555 845 26 74</p>
+        </footer>
+    </div>
+
+</body>
+</html>

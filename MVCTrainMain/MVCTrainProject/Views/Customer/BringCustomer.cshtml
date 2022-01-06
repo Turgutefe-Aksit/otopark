@@ -1,0 +1,48 @@
+﻿@model MVCTrainProject.Models.customer
+
+@{ ViewBag.Title = "BringCustomer"; }
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-3.6.0.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+
+<h2 style="color:white">Müşteri Güncelleme / Update Customer</h2>
+
+@using (Html.BeginForm("UpdateCustomer", "Customer", FormMethod.Post))
+{
+<div>
+
+    <label style="color:white"><strong>Customer Number / Müşteri Numarası</strong></label>
+    @Html.TextBoxFor(m => m.customer_id, new { @class = "form-control", @readonly = "readonly" })
+
+    <label style="color: white"><strong>Name / İsim</strong></label>
+    @Html.TextBoxFor(m => m.fname, new { @class = "form-control" })
+
+    <label style="color:white"><strong>Surname / Soy İsim</strong></label>
+    @Html.TextBoxFor(m => m.lname, new { @class = "form-control" })
+
+    <label style="color:white"><strong>E-Posta</strong></label>
+    @Html.TextBoxFor(m => m.email, new { @class = "form-control" })
+
+    <label style="color:white"><strong>Phone Number / Telefon Numarası</strong></label>
+    @Html.TextBoxFor(m => m.phone_number, new { @class = "form-control" })
+
+    <label style="color: white"><strong>Password / Şifre</strong></label>
+    @Html.TextBoxFor(m => m.pword, new { @class = "form-control" })
+    <br />
+    <button class="btn btn-warning" id="guncelle">Customer Update / Müşteri Güncelle</button>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+    <script>
+
+        $(function () {
+
+            $("#guncelle").on('click', function () {
+                window.alert("Müşteri Başarıyla Güncellendi");
+            });
+        });
+    </script>
+</div>}

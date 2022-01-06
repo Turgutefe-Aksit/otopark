@@ -1,0 +1,35 @@
+﻿@model MVCTrainProject.Models.employee
+@{ ViewBag.Title = "Login";
+                Layout = "~/Views/Shared/_CustomerLayout.cshtml"; }
+
+
+<h2 style="color:white">Login / Giriş Yap</h2>
+
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+    <title>Index</title>
+
+</head>
+<body>
+    @using (Html.BeginForm("Login", "Security", FormMethod.Post))
+    {
+
+<br />
+                <label style="color:white">E-Mail</label>
+                                <br />
+                                                <input type="text" name="email" id="email">
+                                                                <br />
+                                                                                <label style="color:white">Şifre / Password</label>
+                                                                                                <br />
+                                                                                                                <input type="password" name="pword" id="pword">
+                                                                                                                                <br />
+                                                                                                                                                <button id="uyari" class="btn btn-success" type="submit">Giriş</button>
+                                                                                                                                                                <label style="color: red; font-weight:bold">@ViewBag.Message</label>}
+</body>
+</html>
